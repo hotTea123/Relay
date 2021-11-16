@@ -1,0 +1,30 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ client",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${fileDirname}/client_main.cpp",
+                "${fileDirname}/buffer_manager.cpp",
+                "${fileDirname}/map_manager.cpp",
+                "${fileDirname}/relay_client.cpp",
+                "-o",
+                "${fileDirname}/client"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+    "version": "2.0.0"
+}
