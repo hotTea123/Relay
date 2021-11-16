@@ -4,7 +4,6 @@
 #include<vector>
 
 #define HEADLEN 12
-#define STRLEN 10
 
 struct HEADERMSG    //报文头部，12bit
 {
@@ -12,11 +11,5 @@ struct HEADERMSG    //报文头部，12bit
     int decid;
     int len;
 };                                   
-
-// typedef struct DATAMSG     //数据报文
-// {
-//     HEADERMSG head;
-//     std::vector<char> data;
-// }DATAMSG;
 
 #endif

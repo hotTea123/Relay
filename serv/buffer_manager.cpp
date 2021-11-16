@@ -15,7 +15,7 @@ bool Buffer::is_empty(){
         return false;
 }
 
-int Buffer::length(){
+int Buffer::len(){
     return write_index - read_index;
 }
 
@@ -23,19 +23,6 @@ void Buffer::put_vector_to_buffer(std::vector<char> str, int len){
     //将一个vector放入buffer
     buf.insert(buf.end(), str.begin(), str.end());
     write_index += len;
-}
-
-// void Buffer::put_chars_to_buffer(char *str, int len){
-//     int i;
-//     for(i = 0;i < len;i++){
-        
-//     }
-// }
-
-
-void Buffer::head_to_buf(HEADERMSG head){
-    buf.insert(buf.end(), (char*)&head, (char*)&head + HEADLEN);
-    write_index += HEADLEN;
 }
 
 char* Buffer::to_char(){

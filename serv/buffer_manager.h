@@ -14,10 +14,8 @@ class Buffer{
     public:
         Buffer(int sockfd);
         bool is_empty();
-        int length();
+        int len();
         void put_vector_to_buffer(std::vector<char> str, int len);
-        void put_chars_to_buffer(char *str, int len);
-        void head_to_buf(HEADERMSG head);
         char* to_char();
         void read_buffer(int n);   //将buffer的数据读到socket
         void write_buffer(int n);   //将socket的数据写入buffer

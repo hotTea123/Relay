@@ -20,10 +20,3 @@ void EventManager::modify_event(int fd, int state) {
 void EventManager::delete_event(int fd, int state) {
     do_event(fd, state, EPOLL_CTL_DEL);
 }
-
-// int EventManager::setnonblocking(int fd){
-//     int old_opt = fcntl(fd, F_GETFL);
-//     int new_opt = old_opt | O_NONBLOCK;
-//     fcntl(fd, F_SETFL, new_opt);
-//     return old_opt;
-// }

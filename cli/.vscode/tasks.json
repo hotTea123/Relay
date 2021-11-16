@@ -9,6 +9,7 @@
                 "${fileDirname}/client_main.cpp",
                 "${fileDirname}/buffer_manager.cpp",
                 "${fileDirname}/map_manager.cpp",
+                "${fileDirname}/event_manager.cpp",
                 "${fileDirname}/relay_client.cpp",
                 "-o",
                 "${fileDirname}/client"

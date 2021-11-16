@@ -4,7 +4,6 @@
 #include<vector>
 
 #define HEADLEN 12
-#define STRLEN 10
 
 struct HEADERMSG    //报文头部，12bit
 {

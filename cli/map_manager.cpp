@@ -6,12 +6,6 @@ bool Map_Manager::find_userbuf(int userid){
     return true;
 }
 
-bool Map_Manager::find_connbuf(int connfd){
-    if(connfd_buffer.find(connfd) == connfd_buffer.end())
-        return false;
-    return true;
-}
-
 bool Map_Manager::find_userhead(int userid){
     if(userid_header.find(userid) == userid_header.end())
         return false;
@@ -23,17 +17,8 @@ void Map_Manager::insert_u_s(int userid, int sockfd){
     sockfd_userid.insert(std::pair<int, int>(sockfd, userid));
 }
 
-void Map_Manager::insert_u_c(int userid, int connfd){
-    userid_connfd.insert(std::pair<int, int>(userid, connfd));
-    connfd_userid.insert(std::pair<int, int>(connfd, userid));
-}
-
 void Map_Manager::insert_u_b(int userid, Buffer buffer){
     userid_buffer.insert(std::pair<int, Buffer>(userid, buffer));
-}
-
-void Map_Manager::insert_c_b(int connfd, Buffer buffer){
-    connfd_buffer.insert(std::pair<int, Buffer>(connfd, buffer));
 }
 
 void Map_Manager::insert_u_h(int userid, HEADERMSG header){
@@ -46,17 +31,8 @@ void Map_Manager::delete_u_s(int userid){
     sockfd_userid.erase(sockfd);
 }
 
-void Map_Manager::delete_u_c(int userid){
-    int connfd = get_connfd_from_userid(userid);
-    userid_connfd.erase(userid);
-    connfd_userid.erase(connfd);
-}
-
-int Map_Manager::get_userid_from_connfd(int connfd){
-    if (connfd_userid.find(connfd) == connfd_userid.end())
-        return -1;
-    else
-        return connfd_userid.at(connfd);
+void Map_Manager::delete_u_b(int userid){
+    userid_buffer.erase(userid);
 }
 
 int Map_Manager::get_sockfd_from_userid(int userid){
@@ -64,13 +40,6 @@ int Map_Manager::get_sockfd_from_userid(int userid){
         return -1;
     else
         return userid_sockfd.at(userid);
-}
-
-int Map_Manager::get_connfd_from_userid(int userid){
-    if (userid_connfd.find(userid) == userid_connfd.end())
-        return -1;
-    else
-        return userid_connfd.at(userid);
 }
 
 int Map_Manager::get_userid_from_sockfd(int sockfd){

@@ -30,23 +30,23 @@ class Relay_Client
 {
     private:
         int user_count;//用户数量
-        int epfd;
         std::unordered_map<int, USER_STATE> sockfd_state;
         int port;
         char ip[10];
         int send_msg_count;   //已经成功发送的消息数目
         int recv_msg_count;   //已经成功接受的消息数目
-        std::vector<char> data;
+        int strlen;
+        std::vector<char> data;    //所有客户要转发的字符
 
     public:
-        Relay_Client(int session_count, const char* addr, int port);
+        Relay_Client(const char* addr, int port, int session_count, int strlen);
         Map_Manager map_manager;
         int connToServ(const char* servaddr, int servport);//连接到服务器成功返回socketfd,失败返回的socketfd为-1 
         int setnonblocking(int fd);
         int send_to_serv(int userid);
         int recv_from_serv(int sockfd);
         std::vector<char> getline(int n);
-        int run_cli();
+        void run_cli();
         ~Relay_Client() = default;
 };
 
